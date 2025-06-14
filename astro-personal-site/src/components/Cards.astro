@@ -1,0 +1,25 @@
+---
+import Card from './Card.astro';
+import type { Props as CardProps } from './Card.astro';
+
+export type Props = {
+	cards: CardProps[];
+};
+const { cards } = Astro.props;
+---
+
+<div class='cards'>
+	{cards.map((card) => <Card {...card} />)}
+</div>
+
+<style>
+	.cards {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		@media screen and (min-width: 768px) {
+			flex-direction: row;
+		}
+	}
+</style>

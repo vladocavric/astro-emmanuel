@@ -1,9 +1,31 @@
 ---
 import Main from 'src/layouts/Main.astro';
+import Cards from 'src/components/Cards.astro';
 const profilePicture = 'https://avatars.githubusercontent.com/u/4916744?v=4';
+
+const cards = [
+	{
+		title: 'Philosophies',
+		to: '/philosophies',
+		gradientFrom: '#818cf8',
+		gradientTo: '#d8b4fe',
+	},
+	{
+		title: 'Beyond technology',
+		to: '/beyond-tech',
+		gradientFrom: '#fde68a',
+		gradientTo: '#fca5a5',
+	},
+	{
+		title: 'Work Summery',
+		to: '/work-summery',
+		gradientFrom: '#6ee7b7',
+		gradientTo: '#9333ea',
+	},
+];
 ---
 
-<Main>
+<Main title='Home | Frau Katerina'>
 	<div class='profile'>
 		<img
 			src={profilePicture}
@@ -22,6 +44,8 @@ const profilePicture = 'https://avatars.githubusercontent.com/u/4916744?v=4';
 			</p>
 		</div>
 	</div>
+
+	<Cards cards={cards} />
 </Main>
 
 <style>

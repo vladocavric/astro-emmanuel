@@ -1,0 +1,64 @@
+<button data-theme-toggler
+	><svg
+		width='24'
+		height='24'
+		viewBox='0 0 24 24'
+		fill='none'
+		xmlns='http://www.w3.org/2000/svg'
+	>
+		<path
+        class="sun d-none"
+			d='M12 4V2M12 22V20M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M2 12H4M20 12H22M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22M12 6A6 6 0 1 1 6 12 6 6 0 0 1 12 6Z'
+			stroke='currentColor'
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'></path>
+		<path
+        class="moon"
+			d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z'
+			stroke='currentColor'
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'></path>
+	</svg>
+</button>
+
+
+<style>
+    button {
+        cursor: pointer;
+        border-radius: 10px;
+        border: 0;
+        padding: 5px 10px;
+        transition: all 0.2s ease-in-out;
+    }
+    button:hover {
+        scale: 0.9;
+    }
+    button:active{
+        scale: 1
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    :global(.dark) .sun {
+        display: inline-block;
+    }
+    :global(.dark) .moon {
+        display: none;
+    }
+</style>
+
+<script>
+    const button = document.querySelector('[data-theme-toggler]');
+
+    button?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        localStorage.setItem('darkMode', isDarkMode ? 'dark' : 'light');
+    });
+ 
+</script>

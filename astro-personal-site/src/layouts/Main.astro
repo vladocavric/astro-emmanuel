@@ -1,5 +1,13 @@
 ---
+import Footer from 'src/components/Footer.astro';
+import NavigationBar from 'src/components/NavigationBar.astro';
 import 'src/styles/global.css';
+
+type Props = {
+	title: string;
+};
+
+const { title } = Astro.props as Props;
 ---
 
 <html lang='en'>
@@ -8,17 +16,35 @@ import 'src/styles/global.css';
 		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
-		<title>nesto novo</title>
+		<title>{title}</title>
 		<link rel='preconnect' href='https://fonts.googleapis.com' />
 		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 		<link
 			href='https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'
 			rel='stylesheet'
 		/>
+
+		<script is:inline>
+			// Set the initial theme based on localStorage
+			const darkMode = localStorage.getItem('darkMode');
+			if (!darkMode) {
+				window.matchMedia('(prefers-color-scheme: dark)').matches
+					? localStorage.setItem('darkMode', 'dark')
+					: localStorage.setItem('darkMode', 'light');
+			}
+
+			if (darkMode === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
 	</head>
 	<body>
 		<main>
+			<NavigationBar />
 			<slot />
+			<Footer />
 		</main>
 	</body>
 </html>
