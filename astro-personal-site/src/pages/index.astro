@@ -23,6 +23,13 @@ const cards = [
 		gradientTo: '#9333ea',
 	},
 ];
+
+
+const blogs = await Astro.glob<{
+		title: string;
+		subtitle: string;
+		poster: string;
+}>('./blogs/*.md');
 ---
 
 <Main title='Home | Frau Katerina'>
@@ -46,6 +53,23 @@ const cards = [
 	</div>
 
 	<Cards cards={cards} />
+
+	<div class="featured-blogs">
+		<h3>Featured Blogs</h3>
+		<p>Check out my latest blogs on various topics!</p>
+		<!-- <ol>
+			<li><a href="/blogs/understanding-the-basics-of-ai">Understanding the Basics of AI</a></li>
+			<li><a href="/blogs/the-future-of-web-development">The Future of Web Development</a></li>
+			<li><a href="/blogs/open-source-contributions-a-guide">Open Source Contributions: A Guide</a></li>
+			<li><a href="/blogs/building-a-career-in-tech">Building a Career in Tech</a></li>
+		</ol> -->
+
+		<ol>
+			{blogs.map((blog) => (
+				<li><a href={blog.url}>{blog.frontmatter.title}</a></li>
+			))}
+		</ol>
+	</div>
 </Main>
 
 <style>
@@ -66,5 +90,9 @@ const cards = [
 		h1 {
 			margin-top: 0;
 		}
+	}
+
+	.featured-blogs {
+		margin-top: 2rem;
 	}
 </style>
