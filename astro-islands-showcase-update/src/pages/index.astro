@@ -1,0 +1,18 @@
+---
+import "../styles/global.css";
+// import DefaultIslandLayout from "../layouts/DefaultIslandLayout.astro";
+import LargeMainContentLayout from "../layouts/LargeMainContentLayout.astro";
+import { UpvoteContent } from "../components/UpvoteContentReact";
+import UpvoteContentVue from "../components/UpvoteContent.vue";
+---
+
+<LargeMainContentLayout>
+  <UpvoteContent title="click" client:only="react">
+    <em slot="description">An upvote counter created with React</em>
+    <ul slot="awesomeLinks">
+      <li>nesto novo</li>
+      <li>nesto divlje</li>
+    </ul>
+  </UpvoteContent>
+  <UpvoteContentVue client:visible />
+</LargeMainContentLayout>

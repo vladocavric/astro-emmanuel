@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <title>initial island demo</title>
+    <script type="module">
+      import "../mini-island.js";
+    </script>
+  </head>
+
+  <body>
+    <h1>initial island demo</h1>
+    <p style="background-color: aqua; padding-bottom: 100svh">hello island</p>
+
+    <mini-island client:visible>
+      <template data-island>
+        <script type="module">
+          console.warn("this is warning from island");
+        </script>
+      </template>
+    </mini-island>
+  </body>
+</html>
